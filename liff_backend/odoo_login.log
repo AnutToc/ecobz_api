@@ -1,0 +1,25 @@
+[2025-04-08 12:38:40,461] [INFO] odoo: User anut logged in (uid=177, emp=None)
+[2025-04-08 12:48:09,219] [INFO] odoo: [CACHE] Using cached session for anut
+[2025-04-08 12:48:11,410] [INFO] odoo: [CACHE] Using cached session for anut
+[2025-04-08 13:33:14,871] [INFO] odoo: User nootcharin.s logged in (uid=164, emp=1014)
+[2025-04-08 13:34:11,214] [INFO] odoo: [CACHE] Using cached session for nootcharin.s
+[2025-04-09 09:54:30,163] [INFO] odoo: User anut logged in (uid=177, emp=None)
+[2025-04-09 09:55:06,756] [INFO] odoo: User anut@ecobz.org logged in (uid=156, emp=None)
+[2025-04-09 15:06:47,296] [INFO] odoo: User anut@ecobz.org logged in (uid=156, emp=None)
+[2025-04-09 15:08:00,519] [INFO] odoo: User Inv_sakunit logged in (uid=33, emp=217)
+[2025-04-09 15:18:33,565] [INFO] odoo: [CACHE] Using cached session for Inv_sakunit
+[2025-04-09 15:23:49,750] [INFO] odoo: User dussadee.t logged in (uid=89, emp=813)
+[2025-04-09 17:01:28,788] [ERROR] odoo: Unexpected error in odoo_login for username=Inv_sakunit
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\Anut\workspace\django\liff\liff_backend\api\views.py", line 407, in odoo_login
+    employee_department = employee_data[1]['department_id'] if employee_data else None
+IndexError: list index out of range
+[2025-04-09 17:02:28,473] [INFO] odoo: User Inv_sakunit logged in (uid=33, emp=217)
+[2025-04-09 17:04:12,618] [INFO] odoo: [CACHE] Using cached session for Inv_sakunit
+[2025-04-09 17:04:18,263] [INFO] odoo: [CACHE] Using cached session for Inv_sakunit
+[2025-04-09 17:04:46,689] [INFO] odoo: User nootcharin.s logged in (uid=164, emp=1014)
+[2025-04-10 14:16:28,831] [WARNING] odoo: Login failed for user=anutt
+[2025-04-10 14:16:39,822] [INFO] odoo: User anut logged in (uid=177, emp=None)
+[2025-04-10 17:14:03,075] [INFO] odoo: User nootcharin.s logged in (uid=164, emp=1014)
+[2025-04-10 17:19:26,047] [WARNING] odoo: Login failed for user=peera.s
+[2025-04-10 17:19:44,338] [INFO] odoo: User peera.s logged in (uid=57, emp=783)

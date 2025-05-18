@@ -1,0 +1,173 @@
+[2025-04-11 10:20:49,447] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-11 10:20:49,504] [ERROR] odoo: Unexpected error in odoo_login for username=anut
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\Anut\workspace\django\liff\liff_backend\api\views\odoo\auth_views.py", line 66, in odoo_login
+    res = requests.post(session_login_url, json=payload, headers=headers)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None/web/session/authenticate': No scheme supplied. Perhaps you meant https://None/web/session/authenticate?
+[2025-04-11 10:20:49,551] [ERROR] odoo: Exception occurred: MissingSchema: Invalid URL 'None/web/session/authenticate': No scheme supplied. Perhaps you meant https://None/web/session/authenticate?
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\Anut\workspace\django\liff\liff_backend\api\views\odoo\auth_views.py", line 66, in odoo_login
+    res = requests.post(session_login_url, json=payload, headers=headers)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\HP\Desktop\Anut\workspace\django\webscrape\myenv\lib\site-packages\requests\models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None/web/session/authenticate': No scheme supplied. Perhaps you meant https://None/web/session/authenticate?
+[2025-04-11 10:23:21,904] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-11 10:23:24,226] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=anut | uid=177
+[2025-04-11 10:23:24,227] [INFO] odoo: User anut logged in (uid=177, emp=None)
+[2025-04-11 10:24:24,456] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=177
+[2025-04-11 10:25:00,590] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=177
+[2025-04-11 10:27:21,716] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=177
+[2025-04-11 10:27:26,113] [INFO] odoo: [ACTION] [auto_resolver] - read by user_id=177 | model=hr.employee, res_id=None
+[2025-04-11 10:29:41,206] [INFO] odoo: [ACTION] [elearning] - read by user_id=177
+[2025-04-11 10:29:41,207] [INFO] odoo: [ODOO] User 177 using session '1c44dcf6b613f59d01b042378d4c0d3fd14a5a57' for action: Read E-learning
+[2025-04-11 10:31:09,560] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=177
+[2025-04-11 10:31:14,577] [WARNING] odoo: [WARNING] [auto_resolver] - unauthorized access
+[2025-04-11 10:31:14,578] [WARNING] odoo: [WARNING] [auto_resolver] - permission denied: read by user_id=177 | model=hr.employee
+[2025-04-11 10:31:41,392] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=177
+[2025-04-11 10:31:43,954] [INFO] odoo: [ACTION] [auto_resolver] - read by user_id=177 | model=hr.employee, res_id=None
+[2025-04-11 10:32:35,382] [INFO] odoo: [ACTION] [auto_resolver] - read by user_id=177 | model=hr.employee, res_id=217
+[2025-04-11 10:43:28,670] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=177
+[2025-04-11 10:44:21,458] [INFO] odoo: [ACTION] [permission] - patched_full by user_id=177
+[2025-04-11 10:44:28,218] [INFO] odoo: [ACTION] [elearning] - read by user_id=177
+[2025-04-11 10:44:28,218] [INFO] odoo: [ODOO] User 177 using session '1c44dcf6b613f59d01b042378d4c0d3fd14a5a57' for action: Read E-learning
+[2025-04-11 10:50:44,070] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=177
+[2025-04-11 10:53:15,572] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=177
+[2025-04-11 10:54:13,821] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=peera.s
+[2025-04-11 10:54:15,249] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=peera.s | uid=57
+[2025-04-11 10:54:15,250] [INFO] odoo: User peera.s logged in (uid=57, emp=783)
+[2025-04-11 10:54:29,732] [INFO] odoo: [ACTION] [elearning] - read by user_id=57
+[2025-04-11 10:54:29,732] [INFO] odoo: [ODOO] User 57 using session '32b092bd8891b2351ff781958ed26ed6bd930e42' for action: Read E-learning
+[2025-04-11 10:54:40,701] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=57
+[2025-04-11 10:55:40,965] [INFO] odoo: [ACTION] [permission] - patched_upsert by user_id=57
+[2025-04-11 10:55:46,294] [INFO] odoo: [ACTION] [elearning] - read by user_id=57
+[2025-04-11 10:55:46,295] [INFO] odoo: [ODOO] User 57 using session '32b092bd8891b2351ff781958ed26ed6bd930e42' for action: Read E-learning
+[2025-04-11 11:06:25,225] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=Inv_sakunit
+[2025-04-11 11:06:26,721] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=Inv_sakunit | uid=33
+[2025-04-11 11:06:26,722] [INFO] odoo: User Inv_sakunit logged in (uid=33, emp=217)
+[2025-04-11 11:07:08,787] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=33
+[2025-04-11 11:07:08,809] [INFO] odoo: [ACTION] [token] - allowed_endpoint:/api/erp/login/ by user_id=33
+[2025-04-11 11:07:08,811] [INFO] odoo: [ACTION] [token] - allowed_endpoint:/api/v1/auto/erp/purchase.order/read/ by user_id=33
+[2025-04-11 11:07:08,813] [INFO] odoo: [ACTION] [token] - auto_scope:purchase.order by user_id=33
+[2025-04-11 11:07:08,814] [INFO] odoo: [ACTION] [token] - allowed_endpoint:/api/v1/auto/erp/purchase.order/approve/ by user_id=33
+[2025-04-11 11:07:08,816] [INFO] odoo: [ACTION] [token] - allowed_endpoint:/api/v1/auto/erp/purchase.order/reject/ by user_id=33
+[2025-04-11 11:07:52,795] [INFO] odoo: [ACTION] [auto_resolver] - read by user_id=33 | model=purchase.order, res_id=9178
+[2025-04-11 11:09:04,789] [INFO] odoo: [ACTION] [permission] - patched_upsert by user_id=33
+[2025-04-11 11:09:25,240] [INFO] odoo: [ACTION] [auto_resolver] - read by user_id=33 | model=hr.employee, res_id=None
+[2025-04-11 11:13:51,022] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=Inv_sakunit
+[2025-04-11 11:13:51,028] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=Inv_sakunit
+[2025-04-11 11:13:51,029] [INFO] odoo: [CACHE] Using cached session for Inv_sakunit
+[2025-04-11 11:41:10,272] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=33
+[2025-04-11 11:41:10,295] [INFO] odoo: [ACTION] [token] - allowed_endpoint:/api/erp/login/ by user_id=33
+[2025-04-11 11:41:10,296] [INFO] odoo: [ACTION] [token] - allowed_endpoint:/api/v1/auto/erp/hr.employee/read/ by user_id=33
+[2025-04-11 11:41:10,298] [INFO] odoo: [ACTION] [token] - auto_scope:hr.employee by user_id=33
+[2025-04-11 11:50:57,594] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=pawitri@kovickate.com
+[2025-04-11 11:50:59,083] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=pawitri@kovickate.com | uid=14
+[2025-04-11 11:50:59,084] [INFO] odoo: User pawitri@kovickate.com logged in (uid=14, emp=755)
+[2025-04-11 11:56:18,443] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-11 11:56:20,100] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=anut | uid=177
+[2025-04-11 11:56:20,101] [INFO] odoo: User anut logged in (uid=177, emp=None)
+[2025-04-11 11:57:18,951] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-11 11:57:18,977] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=anut
+[2025-04-11 11:57:18,977] [INFO] odoo: [CACHE] Using cached session for anut
+[2025-04-11 11:57:37,278] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-11 11:57:37,283] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=anut
+[2025-04-11 11:57:37,284] [INFO] odoo: [CACHE] Using cached session for anut
+[2025-04-11 11:58:13,369] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-11 11:58:13,389] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=anut
+[2025-04-11 11:58:13,390] [INFO] odoo: [CACHE] Using cached session for anut
+[2025-04-11 11:58:14,527] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-11 11:58:14,531] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=anut
+[2025-04-11 11:58:14,531] [INFO] odoo: [CACHE] Using cached session for anut
+[2025-04-11 11:58:34,192] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut@ecobz.org
+[2025-04-11 11:58:35,841] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=anut@ecobz.org | uid=156
+[2025-04-11 11:58:35,842] [INFO] odoo: User anut@ecobz.org logged in (uid=156, emp=None)
+[2025-04-11 11:59:23,479] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=156
+[2025-04-11 11:59:23,495] [INFO] odoo: [ACTION] [token] - allowed_endpoint:/api/erp/login/ by user_id=156
+[2025-04-11 11:59:23,496] [INFO] odoo: [ACTION] [token] - allowed_endpoint:/api/erp/e-learning/read/ by user_id=156
+[2025-04-11 11:59:46,172] [INFO] odoo: [ACTION] [elearning] - read by user_id=156
+[2025-04-11 11:59:46,172] [INFO] odoo: [ODOO] User 156 using session '44250f72868bc232b7e938c65a192d9ab489e38f' for action: Read E-learning
+[2025-04-11 12:00:20,057] [INFO] odoo: [ACTION] [permission] - patched_upsert by user_id=156
+[2025-04-11 12:03:24,202] [INFO] odoo: [ACTION] [permission] - patched_upsert by user_id=156
+[2025-04-11 12:03:58,873] [INFO] odoo: [ACTION] [auto_resolver] - read by user_id=156 | model=hr.employee, res_id=None
+[2025-04-11 12:04:06,637] [INFO] odoo: [ACTION] [auto_resolver] - read by user_id=156 | model=hr.employee, res_id=None
+[2025-04-11 12:05:10,230] [INFO] odoo: [ACTION] [permission] - patched_upsert by user_id=156
+[2025-04-11 12:05:47,265] [INFO] odoo: [ACTION] [elearning] - read by user_id=156
+[2025-04-11 12:05:47,267] [INFO] odoo: [ODOO] User 156 using session '44250f72868bc232b7e938c65a192d9ab489e38f' for action: Read E-learning
+[2025-04-11 12:09:27,941] [INFO] odoo: [ACTION] [permission] - patched_upsert by user_id=156
+[2025-04-11 12:10:56,127] [INFO] odoo: [ACTION] [permission] - patched_upsert by user_id=156
+[2025-04-11 12:12:02,753] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=156
+[2025-04-11 12:19:38,800] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-11 12:19:38,834] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=anut
+[2025-04-11 12:19:38,834] [INFO] odoo: [CACHE] Using cached session for anut
+[2025-04-11 12:19:52,690] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=pawitri@kovickate.com
+[2025-04-11 12:19:52,695] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=pawitri@kovickate.com
+[2025-04-11 12:19:52,696] [INFO] odoo: [CACHE] Using cached session for pawitri@kovickate.com
+[2025-04-11 12:19:57,336] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=pawitri@kovickate.com
+[2025-04-11 12:19:57,340] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=pawitri@kovickate.com
+[2025-04-11 12:19:57,340] [INFO] odoo: [CACHE] Using cached session for pawitri@kovickate.com
+[2025-04-11 12:20:08,277] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=peera.s
+[2025-04-11 12:20:09,683] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=peera.s | uid=57
+[2025-04-11 12:20:09,683] [INFO] odoo: User peera.s logged in (uid=57, emp=783)
+[2025-04-11 12:21:00,209] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=57
+[2025-04-11 12:22:07,347] [INFO] odoo: [ACTION] [permission] - patched_replace by user_id=57
+[2025-04-11 12:23:20,240] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=57
+[2025-04-11 12:23:31,916] [INFO] odoo: [ACTION] [permission] - patched_replace by user_id=57
+[2025-04-11 12:23:45,351] [INFO] odoo: [ACTION] [permission] - patched_replace by user_id=57
+[2025-04-11 12:24:01,973] [INFO] odoo: [ACTION] [elearning] - read by user_id=57
+[2025-04-11 12:24:01,973] [INFO] odoo: [ODOO] User 57 using session 'cced0d66f645c78793f053dfab878a9e54970655' for action: Read E-learning
+[2025-04-11 12:24:18,940] [INFO] odoo: [ACTION] [auto_resolver] - read by user_id=57 | model=hr.employee, res_id=None
+[2025-04-11 12:26:20,319] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=nootcharin.s
+[2025-04-11 12:26:21,448] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=nootcharin.s | uid=164
+[2025-04-11 12:26:21,449] [INFO] odoo: User nootcharin.s logged in (uid=164, emp=1014)
+[2025-04-11 12:26:41,368] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=nootcharin.s
+[2025-04-11 12:26:41,373] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=nootcharin.s
+[2025-04-11 12:26:41,373] [INFO] odoo: [CACHE] Using cached session for nootcharin.s
+[2025-04-11 12:28:41,085] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=164
+[2025-04-11 12:29:25,504] [INFO] odoo: [ACTION] [permission] - patched_replace by user_id=164
+[2025-04-11 12:30:13,243] [INFO] odoo: [ACTION] [auto_resolver] - approve by user_id=164 | model=purchase.order, res_id=9719
+[2025-04-18 15:55:50,873] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-18 15:55:54,344] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=anut | uid=177
+[2025-04-18 15:55:54,345] [INFO] odoo: User anut logged in (uid=177, emp=None)
+[2025-04-21 14:36:11,450] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-21 14:36:14,993] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=anut | uid=177
+[2025-04-21 14:36:14,995] [INFO] odoo: User anut logged in (uid=177, emp=None)
+[2025-04-21 14:39:42,569] [INFO] odoo: [ACTION] [token] - setup_permissions by user_id=177
+[2025-04-21 14:49:13,598] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-21 14:49:13,605] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=anut
+[2025-04-21 14:49:13,605] [INFO] odoo: [CACHE] Using cached session for anut
+[2025-04-25 09:23:27,911] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-25 09:23:59,209] [INFO] odoo: [ACTION] [odoo_login] - success by user_id=anut | uid=177
+[2025-04-25 09:23:59,209] [INFO] odoo: User anut logged in (uid=177, emp=None)
+[2025-04-25 09:25:03,043] [INFO] odoo: [ACTION] [permission] - patched_replace by user_id=177
+[2025-04-25 09:25:08,582] [INFO] odoo: [ACTION] [elearning] - read by user_id=177
+[2025-04-25 09:25:08,582] [INFO] odoo: [ODOO] User 177 using session '3e61c31adf8ed36e95c59cfd2af542b955aff3c6' for action: Read E-learning
+[2025-04-25 09:26:10,791] [INFO] odoo: [ACTION] [permission] - patched_replace by user_id=177
+[2025-04-25 09:26:14,304] [WARNING] odoo: [WARNING] [auto_resolver] - unauthorized access
+[2025-04-25 09:26:14,304] [WARNING] odoo: [WARNING] [auto_resolver] - permission denied: read by user_id=177 | model=hr.employee
+[2025-04-25 09:26:50,869] [INFO] odoo: [ACTION] [permission] - patched_replace by user_id=177
+[2025-04-25 09:26:54,307] [INFO] odoo: [ACTION] [auto_resolver] - read by user_id=177 | model=hr.employee, res_id=None
+[2025-04-25 09:30:29,523] [INFO] odoo: [ACTION] [odoo_login] - start by user_id=anut
+[2025-04-25 09:30:29,545] [INFO] odoo: [ACTION] [odoo_login] - cached by user_id=anut
+[2025-04-25 09:30:29,545] [INFO] odoo: [CACHE] Using cached session for anut

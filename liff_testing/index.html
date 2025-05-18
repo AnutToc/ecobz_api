@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFF App</title>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.22.3/sdk.js"></script>
+    <style>
+        .container {
+            margin: 20px;
+        }
+        .user-info {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .line-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .profile-details {
+            flex: 1;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #06c755;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #049c42;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LIFF App</h1>
+        <button onclick="initializeLIFF()">Login with LINE</button>
+        
+        <div id="lineUserInfo" class="user-info">
+            <h2>ข้อมูลโปรไฟล์ LINE</h2>
+            <div class="line-profile">
+                <img id="profileImage" src="" alt="Profile" class="profile-img">
+                <div class="profile-details">
+                    <h3 id="displayName"></h3>
+                    <p>User ID: <span id="userId"></span></p>
+                    <div id="saveStatus"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="odooLoginForm" class="user-info">
+            <h2>เข้าสู่ระบบ Odoo</h2>
+            <div class="form-group">
+                <label for="odooUsername">ชื่อผู้ใช้:</label>
+                <input type="text" id="odooUsername" name="odooUsername" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="odooPassword">รหัสผ่าน:</label>
+                <input type="password" id="odooPassword" name="odooPassword" class="form-control">
+            </div>
+            <button onclick="loginToOdoo()">เข้าสู่ระบบ Odoo</button>
+            <div id="odooLoginStatus"></div>
+        </div>
+
+        <div id="odooUserInfo" class="user-info">
+            <h2>ข้อมูลผู้ใช้ Odoo</h2>
+            <pre id="odooData"></pre>
+        </div>
+        
+        <div id="updateElearning" class="user-info">
+            <h2>Update E-Learning</h2>
+            <div class="form-group">
+                <label for="session_id">Session ID:</label>
+                <input type="text" id="session_id" name="session_id" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="user_id">User ID:</label>
+                <input type="text" id="user_id" name="user_id" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="employee_id">Employee ID:</label>
+                <input type="text" id="employee_id" name="employee_id" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="course_name">Course Name:</label>
+                <input type="text" id="course_name" name="course_name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="course_department">Course Department:</label>
+                <input type="text" id="course_department" name="course_department" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="course_progress">Course Progress:</label>
+                <input type="text" id="course_progress" name="course_progress" class="form-control">
+            </div>
+            <button onclick="updateElearning()">Update E-Learning</button>
+            <div id="updateStatus"></div>
+        </div>
+
+        <div id="approvePOForm" class="user-info">
+            <h2>อนุมัติใบสั่งซื้อ (PO)</h2>
+            <div class="form-group">
+                <label for="session_id">Session ID:</label>
+                <input type="text" id="session_id" name="session_id" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="user_id">User ID:</label>
+                <input type="text" id="user_id" name="user_id" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="poId">รหัสใบสั่งซื้อ (PO ID):</label>
+                <input type="text" id="poId" name="poId" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="poName">ชื่อใบสั่งซื้อ (PO Name):</label>
+                <input type="text" id="poName" name="poName" class="form-control">
+            </div>
+            <button onclick="approvePO()">อนุมัติใบสั่งซื้อ</button>
+            <div id="approveStatus"></div>
+        </div>
+    </div>
+
+    <script>
+        async function initializeLIFF() {
+            try {
+                await liff.init({ liffId: "2007077479-NrWEaQbL" });
+
+                if (!liff.isLoggedIn()) {
+                    liff.login({ redirectUri: window.location.href });
+                    return;
+                }
+
+                const profile = await liff.getProfile();
+                console.log(profile);
+                
+                document.getElementById('profileImage').src = profile.pictureUrl || "https://via.placeholder.com/80";
+                document.getElementById('displayName').textContent = profile.displayName;
+                document.getElementById('userId').textContent = profile.userId;
+                document.getElementById('lineUserInfo').style.display = 'block';
+
+                fetch("http://127.0.0.1:8000/api/line/users/save", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        userId: profile.userId,
+                        displayName: profile.displayName,
+                        pictureUrl: profile.pictureUrl
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Server Response:", data);
+                    const saveStatus = document.getElementById('saveStatus');
+                    saveStatus.textContent = data.message || "บันทึกข้อมูลสำเร็จ";
+                    saveStatus.className = "status success";
+                })
+                .catch(error => {
+                    console.error("Fetch Error:", error);
+                    const saveStatus = document.getElementById('saveStatus');
+                    saveStatus.textContent = "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " + error.message;
+                    saveStatus.className = "status error";
+                });                
+            } catch (error) {
+                console.error("LIFF Initialization Error:", error);
+                alert("เกิดข้อผิดพลาดในการเริ่มต้น LIFF: " + error.message);
+            }
+        }
+        function loginToOdoo() {
+            const username = document.getElementById("odooUsername").value;
+            const password = document.getElementById("odooPassword").value;
+        
+            if (!username || !password) {
+                showStatus("odooLoginStatus", "กรุณากรอกชื่อผู้ใช้และรหัสผ่าน", "error");
+                return;
+            }
+        
+            showStatus("odooLoginStatus", "กำลังเข้าสู่ระบบ...", "");
+        
+            fetch("http://127.0.0.1:8000/api/odoo/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    odooSession = {
+                        session_id: data.session_id,
+                        user_id: data.user_id
+                    };
+        
+                    document.getElementById("odooUserInfo").style.display = "block";
+                    document.getElementById("odooData").textContent = JSON.stringify(data, null, 2);
+        
+                    showStatus("odooLoginStatus", "เข้าสู่ระบบสำเร็จ", "success");
+                } else {
+                    showStatus("odooLoginStatus", data.message || "เข้าสู่ระบบล้มเหลว", "error");
+                }
+            })
+            .catch(error => {
+                showStatus("odooLoginStatus", "เกิดข้อผิดพลาด: " + error.message, "error");
+            });
+        }
+        
+        function getOdooUser() {
+            const username = document.getElementById("odooUsername").value;
+            const password = document.getElementById("odooPassword").value;
+            const employeeId = document.getElementById("employeeId").value;
+            const employeeName = document.getElementById("employeeName").value;
+        
+            if (!username || !password) {
+                showStatus("odooLoginStatus", "กรุณากรอกชื่อผู้ใช้และรหัสผ่าน", "error");
+                return;
+            }
+        
+            if (!employeeId && !employeeName) {
+                showStatus("odooLoginStatus", "กรุณากรอกชื่อพนักงานหรือรหัสพนักงาน", "error");
+                return;
+            }
+        
+            showStatus("odooLoginStatus", "กำลังค้นหาข้อมูลผู้ใช้...", "");
+        
+            fetch("http://127.0.0.1:8000/api/odoo/users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    employee_id: employeeId || null,
+                    employee_name: employeeName || null
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("odooUserInfo").style.display = "block";
+                document.getElementById("odooData").textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById("odooData").textContent = "เกิดข้อผิดพลาด: " + error.message;
+            });
+        }
+        function updateElearning() {
+            const session_id = document.getElementById("session_id").value;
+            const user_id = document.getElementById("user_id").value;
+            const employee_id = document.getElementById("employee_id").value;
+            const course_name = document.getElementById("course_name").value;
+            const course_department = document.getElementById("course_department").value;
+            const course_progress = document.getElementById("course_progress").value;
+            
+            if (!session_id || !user_id || !employee_id || !course_name || !course_department || !course_progress) {
+                showStatus("updateStatus", "กรุณากรอกข้อมูลให้ครบถ้วน", "error");
+                return;
+            }
+            
+            showStatus("updateStatus", "กำลังอัปเดตข้อมูล E-Learning...", "");
+            
+            fetch("http://127.0.0.1:8000/api/odoo/e-learning/update", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    session_id: session_id,
+                    user_id: user_id,
+                    employee_id: employee_id,
+                    course_name: course_name,
+                    course_department: course_department,
+                    course_progress: course_progress
+                })
+            })
+            .then(async (res) => {
+                const text = await res.text();
+                try {
+                    const data = JSON.parse(text);
+                    if (res.ok && data.status === "success" && data.updated === true) {
+                        showStatus("updateStatus", "อัปเดตข้อมูล E-Learning สำเร็จ", "success");
+                    } else {
+                        showStatus("updateStatus", data.message || "เกิดข้อผิดพลาดในการอัปเดตข้อมูล", "error");
+                    }
+                } catch (error) {
+                    console.error("JSON Parse Error:", text);
+                    showStatus("updateStatus", "เซิร์ฟเวอร์ส่งกลับข้อมูลที่ไม่ถูกต้อง", "error");
+                }
+            })
+            .catch(error => {
+                console.error("Fetch Error:", error);
+                showStatus("updateStatus", "เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์", "error");
+            });
+        }
+        function approvePO() {
+            const session_id = document.getElementById("session_id").value;
+            const user_id = document.getElementById("user_id").value;
+            const poId = document.getElementById("poId").value;
+            const poName = document.getElementById("poName").value;
+            
+            if (!session_id || !user_id) {
+                showStatus("approveStatus", "กรุณาเข้าสู่ระบบ Odoo ก่อนอนุมัติใบสั่งซื้อ", "error");
+                return;
+            }
+            
+            if (!poId && !poName) {
+                showStatus("approveStatus", "กรุณากรอกรหัสใบสั่งซื้อหรือชื่อใบสั่งซื้อ", "error");
+                return;
+            }
+            
+            showStatus("approveStatus", "กำลังดำเนินการอนุมัติใบสั่งซื้อ...", "");
+            
+            fetch("http://127.0.0.1:8000/api/odoo/approve_po", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    session_id: session_id,
+                    user_id: user_id,
+                    po_id: poId || null,
+                    po_name: poName || null
+                })
+            })
+            .then(async (res) => {
+                const text = await res.text();
+                try {
+                    const data = JSON.parse(text);
+                    if (data.success) {
+                        showStatus("approveStatus", "อนุมัติใบสั่งซื้อสำเร็จ", "success");
+                    } else {
+                        showStatus("approveStatus", data.message || "เกิดข้อผิดพลาดในการอนุมัติใบสั่งซื้อ", "error");
+                    }
+                } catch (error) {
+                    console.error("JSON Parse Error:", text);
+                    showStatus("approveStatus", "เซิร์ฟเวอร์ส่งกลับข้อมูลที่ไม่ถูกต้อง", "error");
+                }
+            })
+            .catch(error => {
+                console.error("Fetch Error:", error);
+                showStatus("approveStatus", "เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์", "error");
+            });
+        }
+        
+        function showStatus(id, message, statusClass) {
+            const el = document.getElementById(id);
+            el.textContent = message;
+            el.className = statusClass ? "status " + statusClass : "";
+        }
+        
+        window.onload = async function() {
+            try {
+                await liff.init({ liffId: "2007077479-NrWEaQbL" });
+                if (liff.isLoggedIn()) {
+                    const profile = await liff.getProfile();
+                    document.getElementById('profileImage').src = profile.pictureUrl || "https://via.placeholder.com/80";
+                    document.getElementById('displayName').textContent = profile.displayName;
+                    document.getElementById('userId').textContent = profile.userId;
+                    document.getElementById('lineUserInfo').style.display = 'block';
+                }
+            } catch (error) {
+                console.error("Error checking login status:", error);
+            }
+        };        
+    </script>
+</body>
+</html>
