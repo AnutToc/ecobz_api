@@ -3,16 +3,18 @@ version: '3.8'
 services:
   django_gateway:
     build: ./liff_backend
+    env_file:
+      - .env
     environment:
-      - DEBUG=True
+      - DEBUG=False
       - SECRET_KEY=supersecret123
       - GATEWAY_DB_NAME=API_Gateway
       - GATEWAY_DB_USER=postgres
       - GATEWAY_DB_PASSWORD=admin
       - GATEWAY_DB_HOST=gateway_postgres
       - GATEWAY_DB_PORT=5432
-      - ODOO_URL=http://odoo:8069
-      - ODOO_DB=kovic_db_26/03/25
+      - ODOO_URL=${ODOO_URL}
+      - ODOO_DB=${ODOO_DB}
       - REDIS_URL=redis://redis:6379/1
     depends_on:
       - redis
