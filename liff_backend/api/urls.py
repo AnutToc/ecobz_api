@@ -86,7 +86,8 @@ from django.urls import path, include
 from api.utils.schema_views import get_dynamic_schema_view
 
 urlpatterns = [
-    path("docs/", get_dynamic_schema_view, name="docs-by-host"),
+    path("", get_dynamic_schema_view, name="docs-by-host"),
+    # path("docs/", get_dynamic_schema_view, name="docs-by-host"),
     # path("line/", include("api.views.line.urls")),
     # path("erp/", include("api.views.odoo.urls")),
 ]
