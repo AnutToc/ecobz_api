@@ -24,7 +24,8 @@ SECRET_KEY = 'django-insecure-4a5r%w#l62-&1pgd4v(t6c1#cnddlves+%)39&4_t(gnozqu#(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'api.erp.com', 'api.line.com', 'api.test.com', '8e54-171-6-199-212.ngrok-free.app', '159.89.203.0']
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'api.erp.com', 'api.line.com', 'api.test.com', '8e54-171-6-199-212.ngrok-free.app', '159.89.203.0']
+ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
