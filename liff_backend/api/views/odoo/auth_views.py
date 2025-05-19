@@ -133,7 +133,7 @@ def odoo_login(request):
         # for origin in origins:
         #     AllowedOrigin.objects.create(token=token, origin=origin)
 
-        endpoints = ['/api/erp/login/']
+        endpoints = ['e-learning/read/', '/km/create/']
         for path in endpoints:
             AllowedEndpoint.objects.create(token=token, path=path)
 
