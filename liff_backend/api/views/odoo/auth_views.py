@@ -91,7 +91,7 @@ def odoo_login(request):
                 "model": "hr.employee",
                 "method": "search_read",
                 "args": [[["user_id", "=", uid]]],
-                "kwargs": {"fields": ["id", "name", "job_id", "department_id"]}
+                "kwargs": {"fields": ["id", "name", "last_name", "job_id", "department_id"]}
             },
             "id": 1
         }
@@ -106,8 +106,13 @@ def odoo_login(request):
         employee_data = employee_res.json().get('result', [])
         employee_info = employee_data[0] if employee_data else {}
         employee_id = employee_info.get('id')
-        department_name = employee_info.get('department_id', [None, None])[1]
+        name = employee_info.get('name')
+        last_name = employee_info.get('last_name')
+        job_id = employee_info.get('job_id', [None])[0]
         job_name = employee_info.get('job_id', [None, None])[1]
+        department_id = employee_info.get('department_id', [None])[0]
+        department_name = employee_info.get('department_id', [None, None])[1]
+
 
 
         user, _ = User.objects.get_or_create(username=f"odoo_user_{uid}")
@@ -152,7 +157,11 @@ def odoo_login(request):
             'session_id': session_id,
             'user_id': uid,
             'employee_id': employee_id,
+            'name': name,
+            'last_name': last_name,
+            'job_id': job_id,
             'job_name': job_name,
+            'department_id': department_id,
             'department_name': department_name,
             'user_context': result.get('user_context'),
             'db': db,
