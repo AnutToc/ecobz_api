@@ -132,10 +132,11 @@ ROOT_URLCONF = 'liff_backend.urls'
 
 from corsheaders.defaults import default_headers
 
-CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = [
-#     "https://liff.line.me",
-# ]
+# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://api.ecobz.team",
+]
+
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'authorization',
 ]
@@ -174,6 +175,7 @@ SWAGGER_SETTINGS = {
         }
     },
     'PERSIST_AUTH': True,
+    'DEFAULT_API_URL': 'https://api.ecobz.team/'
 }
 
 # Database
@@ -222,6 +224,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
