@@ -91,7 +91,7 @@ def odoo_login(request):
                 "model": "hr.employee",
                 "method": "search_read",
                 "args": [[["user_id", "=", uid]]],
-                "kwargs": {"fields": ["id", "name", "last_name", "job_id", "department_id"]}
+                "kwargs": {"fields": ["id", "name", "last_name", "level", "job_id", "department_id"]}
             },
             "id": 1
         }
@@ -108,6 +108,7 @@ def odoo_login(request):
         employee_id = employee_info.get('id')
         name = employee_info.get('name')
         last_name = employee_info.get('last_name')
+        level = employee_info.get('level')
         job_id = employee_info.get('job_id', [None])[0]
         job_name = employee_info.get('job_id', [None, None])[1]
         department_id = employee_info.get('department_id', [None])[0]
@@ -159,6 +160,7 @@ def odoo_login(request):
             'employee_id': employee_id,
             'name': name,
             'last_name': last_name,
+            'level': level,
             'job_id': job_id,
             'job_name': job_name,
             'department_id': department_id,
